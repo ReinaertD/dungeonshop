@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Main from "../views/Main.vue";
+import Main from "../components/Main";
 
 Vue.use(VueRouter);
 
@@ -9,6 +9,7 @@ const routes = [
     path: "/",
     name: "iMain",
     component: Main,
+    props: true,
   },
   {
     path: "/form",
@@ -17,7 +18,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Form.vue"),
+      import(/* webpackChunkName: "about" */ "../components/Form.vue"),
   },
 ];
 
