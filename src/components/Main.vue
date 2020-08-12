@@ -42,9 +42,7 @@
               class="alert alert-warning"
               v-else-if="product.availableInventory - cartCount(product.id) < 5"
               >Only
-              {{
-                product.availableInventory - cartCount(product.id)
-              }}
+              {{ product.availableInventory - cartCount(product.id) }}
               left!</span
             >
             <span v-else>Plenty left!</span>
@@ -57,8 +55,13 @@
 
 <script>
 import MyHeader from "./Header";
+import axios from "axios";
 
-var APP_LOG_LIFECYCLE_EVENTS = true;
+function compare(a, b) {
+  if (a.title.toLowerCase() < b.title.toLowerCase()) return -1;
+  if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+  return 0;
+}
 
 export default {
   name: "imain",
@@ -75,13 +78,6 @@ export default {
     addToCart(aProduct) {
       this.cart.push(aProduct.id);
     },
-    showCheckout() {
-      this.showProduct = this.showProduct ? false : true;
-    },
-    submitForm() {
-      console.log(this.order);
-      alert("Submitted");
-    },
     checkRating(n, myProduct) {
       return myProduct.rating - n >= 0;
     },
@@ -96,6 +92,18 @@ export default {
         }
       }
       return count;
+    },
+  },
+  computed: {
+    cartItemCount() {
+      return this.cart.length || "";
+    },
+    sortedProducts() {
+      let productsArray = [];
+      if (this.products.length > 0) {
+        productsArray = this.products.slice(0);
+      }
+      return productsArray.sort(compare);
     },
   },
   filters: {
@@ -117,13 +125,8 @@ export default {
       }
     },
   },
-  beforeCreate: () => {
-    if (APP_LOG_LIFECYCLE_EVENTS) {
-      console.log("beforeCreate");
-    }
-  },
   created: function() {
-    // eslint-disable-next-line no-undef
+    console.log("starting axios request");
     axios
       .get("/static/products.json")
       .then((response) => {
@@ -131,36 +134,7 @@ export default {
         console.log(this.products);
       })
       .catch((error) => console.log(error));
-  },
-  beforeMount: () => {
-    if (APP_LOG_LIFECYCLE_EVENTS) {
-      console.log("beforeMount");
-    }
-  },
-  mounted: () => {
-    if (APP_LOG_LIFECYCLE_EVENTS) {
-      console.log("mounted");
-    }
-  },
-  beforeUpdate: () => {
-    if (APP_LOG_LIFECYCLE_EVENTS) {
-      console.log("beforeUpdate");
-    }
-  },
-  updated: () => {
-    if (APP_LOG_LIFECYCLE_EVENTS) {
-      console.log("updated");
-    }
-  },
-  beforeDestroy: () => {
-    if (APP_LOG_LIFECYCLE_EVENTS) {
-      console.log("beforeDestroy");
-    }
-  },
-  destroyed: () => {
-    if (APP_LOG_LIFECYCLE_EVENTS) {
-      console.log("destroyed");
-    }
+    console.log("end axios request");
   },
 };
 </script>
