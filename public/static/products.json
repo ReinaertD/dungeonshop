@@ -5,7 +5,7 @@
       "title": "Pile of bones, medium",
       "description": "A pile of medium sized bones, perfect for decorating your dungeon!",
       "price": 1000,
-      "image": "assets/images/bonepile.png",
+      "image": "static/images/bonepile.png",
       "availableInventory": 10,
       "rating": 3
     },
@@ -14,7 +14,7 @@
       "title": "Wooden treasure chest",
       "description": "A sturdy wooden chest, great for storing adventurer rewards such as gems and magical items!",
       "price": 2500,
-      "image": "assets/images/treasurechest.png",
+      "image": "static/images/treasurechest.png",
       "availableInventory": 23,
       "rating": 4
     },
@@ -23,7 +23,7 @@
       "title": "Green Slime",
       "description": "A classic dungeon monster. Can stick to walls and spew acid. Comes in all different sizes!",
       "price": 11200,
-      "image": "assets/images/slime.png",
+      "image": "static/images/slime.png",
       "availableInventory": 7,
       "rating": 2
     },
@@ -32,7 +32,7 @@
       "title": "Mimic",
       "description": "You want to trick those pesky adventurers? Get a mimic! Combined with furniture like the treasure chest you're guaranteed to get some adventurer's corpses!",
       "price": 43200,
-      "image": "assets/images/mimic.png",
+      "image": "static/images/mimic.png",
       "availableInventory": 29,
       "rating": 4
     },
@@ -41,7 +41,7 @@
       "title": "Beholder",
       "description": "Possibly the most iconic monster from <b>Pungence and Flagons</b>. A great pick for a a boss-fight. Contact us for different varieties!",
       "price": 99999,
-      "image": "assets/images/beholder.png",
+      "image": "static/images/beholder.png",
       "availableInventory": 4,
       "rating": 5
     },
@@ -50,7 +50,7 @@
       "title": "Spike trap, wood",
       "description": "A wooden spike trap. Make your adventurers weary of the dangers ahead!",
       "price": 100,
-      "image": "assets/images/spiketrap.png",
+      "image": "static/images/spiketrap.png",
       "availableInventory": 543,
       "rating": 1
     }
