@@ -19,6 +19,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../components/Form.vue"),
+    props: true,
+  },
+  {
+    path: "/product/:id",
+    name: "Id",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../components/Product.vue"),
+    props: true,
   },
 ];
 

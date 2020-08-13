@@ -1,6 +1,6 @@
 <template>
   <div>
-    <my-header :cartItmeCount="cartItemCount"></my-header>
+    <my-header :cartItemCount="cartItemCount"></my-header>
     <main>
       <div v-for="product in sortedProducts" v-bind:key="product.id">
         <div class="row">
@@ -10,7 +10,11 @@
             </figure>
           </div>
           <div class="col description">
-            <h1 v-text="product.title"></h1>
+            <router-link
+              tag="h1"
+              :to="{ name: 'Id', params: { id: product.id } }"
+              >{{ product.title }}</router-link
+            >
             <p v-html="product.description"></p>
             <div class="rating">
               <span
@@ -34,12 +38,12 @@
               Add to Cart
             </button>
             <span
-              class="alert alert-danger"
+              class="btn alert-danger"
               v-if="product.availableInventory - cartCount(product.id) === 0"
               >Stock is currently empty!</span
             >
             <span
-              class="alert alert-warning"
+              class="btn alert-warning"
               v-else-if="product.availableInventory - cartCount(product.id) < 5"
               >Only
               {{ product.availableInventory - cartCount(product.id) }}
