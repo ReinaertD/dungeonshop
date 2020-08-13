@@ -55,7 +55,6 @@
 
 <script>
 import MyHeader from "./Header";
-import axios from "axios";
 
 function compare(a, b) {
   if (a.title.toLowerCase() < b.title.toLowerCase()) return -1;
@@ -126,7 +125,8 @@ export default {
     },
   },
   created: function() {
-    console.log("starting axios request");
+    /*global axios*/
+    console.log("starting request");
     axios
       .get("/static/products.json")
       .then((response) => {
