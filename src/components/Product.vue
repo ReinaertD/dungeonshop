@@ -14,7 +14,7 @@
         <p class="price">{{ product.price || formatPrice }}</p>
       </div>
     </div>
-    <button @click="edit">Edit product</button>
+    <button class="btn btn-info" @click="edit">Edit product</button>
     <router-view></router-view>
   </div>
 </template>
