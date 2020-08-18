@@ -37,19 +37,25 @@
             <button class="btn btn-warning" v-else disabled="true">
               Add to Cart
             </button>
-            <span
-              class="btn alert-danger"
-              v-if="product.availableInventory - cartCount(product.id) === 0"
-              >Stock is currently empty!</span
-            >
-            <span
-              class="btn alert-warning"
-              v-else-if="product.availableInventory - cartCount(product.id) < 5"
-              >Only
-              {{ product.availableInventory - cartCount(product.id) }}
-              left!</span
-            >
-            <span v-else>Plenty left!</span>
+            <transition mode="out-in" name="bounce">
+              <span
+                class="inventory-message"
+                v-if="product.availableInventory - cartCount(product.id) === 0"
+                key="0"
+                >Stock is currently empty!</span
+              >
+              <span
+                class="inventory-message"
+                v-else-if="
+                  product.availableInventory - cartCount(product.id) < 5
+                "
+                key=""
+                >Only
+                {{ product.availableInventory - cartCount(product.id) }}
+                left!</span
+              >
+              <span class="inventory-message" v-else key="">Plenty left!</span>
+            </transition>
           </div>
         </div>
       </div>
@@ -143,4 +149,27 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.bounce-enter-active {
+  animation: shake 0.72s cubic-bezier(0.37, 0.07, 0.19, 0.97) both;
+}
+@keyframes shake {
+  10%,
+  90% {
+    color: red;
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+</style>
